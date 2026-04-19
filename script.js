@@ -29,4 +29,56 @@ document.getElementById('lbClose').addEventListener('click', () => { document.ge
 document.getElementById('lightbox').addEventListener('click', function (e) { if (e.target === this) { this.classList.remove('active'); document.body.style.overflow = ''; } });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; } });
 function loadVideo() { document.getElementById('videoThumb').innerHTML = '<iframe width="100%" height="100%" style="position:absolute;inset:0;width:100%;height:100%;border-radius:20px;" src="https://www.youtube.com/embed/UmT69NakqLM?autoplay=1&mute=1" frameborder="0" allow="autoplay;encrypted-media" allowfullscreen></iframe>'; }
-function handleSubmit() { const f = document.getElementById('fname').value.trim(), m = document.getElementById('fmobile').value.trim(), c = document.getElementById('fcourse').value; if (!f) { alert('Please enter your name.'); return; } if (!m) { alert('Please enter your mobile number.'); return; } if (!c) { alert('Please select a programme.'); return; } const btn = document.getElementById('submitBtn'); btn.textContent = '✓ Enquiry Submitted!'; btn.style.background = 'linear-gradient(135deg,#22c55e,#16a34a)'; btn.style.boxShadow = '0 8px 28px rgba(34,197,94,.3)'; setTimeout(() => { btn.textContent = 'Submit Enquiry \u2192'; btn.style.background = ''; btn.style.boxShadow = ''; }, 3500); }
+function handleSubmit() {
+  const f = document.getElementById('fname').value.trim(),
+    l = document.getElementById('lname').value.trim(),
+    m = document.getElementById('fmobile').value.trim(),
+    e = document.getElementById('femail').value.trim(),
+    c = document.getElementById('fcourse').value,
+    city = document.getElementById('fcity').value.trim();
+
+  if (!f) { alert('Please enter your name.'); return; }
+  if (!m) { alert('Please enter your mobile number.'); return; }
+  if (!c) { alert('Please select a programme.'); return; }
+
+  const btn = document.getElementById('submitBtn');
+  const originalContent = btn.innerHTML;
+  btn.textContent = 'Sending...';
+  btn.style.opacity = '0.7';
+  btn.style.pointerEvents = 'none';
+
+  const templateParams = {
+    title: "Mr/Ms",
+    first_name: f,
+    last_name: l,
+    mobile: m,
+    email: e,
+    course: c,
+    city: city,
+    time: new Date().toLocaleString(),
+    name: f + ' ' + l,
+  };
+
+  // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS Public Key
+  emailjs.send("service_q9msprr", "template_58qca04", templateParams, "XycVLpQ8mcBMmGfoL")
+    .then(function (response) {
+      btn.textContent = '✓ Enquiry Submitted!';
+      btn.style.background = 'linear-gradient(135deg,#22c55e,#16a34a)';
+      btn.style.boxShadow = '0 8px 28px rgba(34,197,94,.3)';
+      btn.style.opacity = '1';
+      console.log('SUCCESS!', response.status, response.text);
+      setTimeout(() => {
+        btn.textContent = 'Submit Enquiry →';
+        btn.style.background = '';
+        btn.style.boxShadow = '';
+        btn.style.pointerEvents = 'auto';
+      }, 3500);
+    }, function (error) {
+      btn.textContent = 'Error! Try Again';
+      btn.style.background = 'linear-gradient(135deg,#ef4444,#dc2626)';
+      btn.style.pointerEvents = 'auto';
+      btn.style.opacity = '1';
+      console.error('FAILED...', error);
+      alert('Failed to send enquiry. Please check your internet or EmailJS configuration.');
+    });
+}
