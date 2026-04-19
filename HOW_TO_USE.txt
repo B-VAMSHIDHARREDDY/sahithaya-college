@@ -1,0 +1,57 @@
+═══════════════════════════════════════════════════════════
+  SAHITHYA DEGREE & PG COLLEGE — MODERN WEBSITE v2.0
+═══════════════════════════════════════════════════════════
+
+HOW TO USE
+──────────
+1. Open index.html in any modern browser (Chrome/Edge/Firefox)
+2. To host: upload index.html to Netlify, GitHub Pages,
+   Hostinger or any web host. No server needed.
+
+WHERE TO REPLACE DUMMY CONTENT
+───────────────────────────────
+PHOTOS: Every dummy image card shows "Replace with photo"
+  → Replace the entire <div class="dummy-img">...</div>
+    block with: <img src="your-photo.jpg" style="width:100%;height:100%;object-fit:cover;"/>
+
+VIDEO: The campus tour video section
+  → In the loadVideo() JS function, replace the YouTube
+    src URL with your own YouTube video embed URL:
+    https://www.youtube.com/embed/YOUR_VIDEO_ID
+
+FACULTY PHOTOS: Replace the emoji avatar (👨‍💼) in
+  <div class="fty-avatar"> with an <img> tag.
+  Add real names, titles and descriptions in fty-body.
+
+PHONE NUMBER: Search "08563" and replace with real number.
+
+FEATURES INCLUDED
+─────────────────
+✅ Custom gold cursor with ring follower
+✅ Scroll progress bar (gold top line)
+✅ Animated announcement bar (shimmer effect)
+✅ Glassmorphism fixed navbar (scrolled state)
+✅ Hero with mesh gradient orbs + floating animations
+✅ Animated stat counters (scroll-triggered)
+✅ Image mosaic layout with floating badge
+✅ About section with animated cards
+✅ Campus video section (click-to-play)
+✅ Course cards with UG/PG filter tabs
+✅ Bento grid gallery (6 cells, big layout)
+✅ 8 Facilities cards (hover effects)
+✅ Faculty grid with photo placeholders
+✅ Admission form (4-step process + enquiry form)
+✅ Testimonials with quote typography
+✅ Location with animated map pin
+✅ Footer with 4 columns
+
+DESIGN SYSTEM
+─────────────
+Primary: #d4a017 (Gold)
+Accent:  #e8841a (Amber)
+Background: #0a0e17 (Deep Ink)
+Font Display: Cormorant Garamond (Google Fonts)
+Font Body:    DM Sans (Google Fonts)
+Font Titles:  Bebas Neue (Google Fonts)
+
+═══════════════════════════════════════════════════════════
